@@ -4,10 +4,14 @@ import {Component} from '@angular/core';
 @Component({
     selector:'courses',
     template:`
-        <div (click)="onDivClicked()">
-            <button (click)="onSave($event)">Save</button>
-        </div>
+        <input (keyup.enter)="onKeyUp()"/>
     `
+    
+    //`
+    //     <div (click)="onDivClicked()">
+    //         <button (click)="onSave($event)">Save</button>
+    //     </div>
+    // `
     //`
     //     <button class="btn btn-primary" [class.active]="isActive" [style.backgroundColor]="isActive ? 'blue':'white'">Save</button>
     // `
@@ -49,5 +53,10 @@ export class CoursesComponent {
 
     onDivClicked(){
         console.log("div was clicked");
+    }
+
+    onKeyUp(){
+        //if($event.keyCode==13)
+            console.log("Enter was pressed");
     }
 }
