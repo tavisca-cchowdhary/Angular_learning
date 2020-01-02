@@ -4,7 +4,8 @@ import {Component} from '@angular/core';
 @Component({
     selector:'courses',
     template:`
-        <input #email (keyup.enter)="onKeyUp(email.value)"/>
+        <input [value]="email" (keyup.enter)="email= $event.target.value; onKeyUp()"/>
+        <input [(ngModel)]="email" (keyup.enter)="onKeyUp()"/>
     `
     
     //`
@@ -37,6 +38,7 @@ export class CoursesComponent {
     imageUrl="http://lorempixel.com/400/200";
     colSpan=2;
     isActive=true;
+    email="cham@g.com";
 
     constructor(service:CoursesService){
         //let service=new CoursesService();
@@ -55,8 +57,8 @@ export class CoursesComponent {
         console.log("div was clicked");
     }
 
-    onKeyUp(email){
+    onKeyUp(){
         //if($event.keyCode==13)
-            console.log(email);
+            console.log(this.email);
     }
 }
