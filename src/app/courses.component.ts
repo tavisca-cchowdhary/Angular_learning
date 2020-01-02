@@ -4,9 +4,14 @@ import {Component} from '@angular/core';
 @Component({
     selector:'courses',
     template:`
-        <button class="btn btn-primary" [class.active]="isActive" [style.backgroundColor]="isActive ? 'blue':'white'">Save</button>
+        <div (click)="onDivClicked()">
+            <button (click)="onSave($event)">Save</button>
+        </div>
     `
-    // template: `<h2>{{getTitle()}}</h2>
+    //`
+    //     <button class="btn btn-primary" [class.active]="isActive" [style.backgroundColor]="isActive ? 'blue':'white'">Save</button>
+    // `
+    //  template: `<h2>{{getTitle()}}</h2>
     //            <ul>
     //                 <li *ngFor="let course of courses">
     //                     {{course}}
@@ -35,5 +40,14 @@ export class CoursesComponent {
     }
     getTitle(){
         return this.title;
+    }
+
+    onSave($event){
+        $event.stopPropagation();
+        console.log("Button was clicked", $event);
+    }
+
+    onDivClicked(){
+        console.log("div was clicked");
     }
 }
